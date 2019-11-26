@@ -5,10 +5,12 @@ import javax.jms.*;
 
 public class JmsProduceQueue {
     //public static final String ACTIVEMQ_URL = "tcp://39.106.85.90:61616";
-    public static final String ACTIVEMQ_URL = "tcp://localhost:61616";
+    //public static final String ACTIVEMQ_URL = "tcp://localhost:61616";
+    public static final String ACTIVEMQ_URL = "nio://39.106.85.90:61608";
     public static final String ACTIVEMQ_USERNAME = "admin";
     public static final String ACTIVEMQ_PASSWORD = "admin";
-    public static final String QUEUE_NAME = "queue01";
+    //public static final String QUEUE_NAME = "queue01";
+    public static final String QUEUE_NAME = "Transport";
 
     public static void main(String[] args) throws Exception{
         //1.创建连接工厂，按照给定的URL地址，采用默认的用户名个密码

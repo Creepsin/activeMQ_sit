@@ -5,11 +5,12 @@ import javax.jms.*;
 
 public class JmsConsumerQueue {
     //public static final String ACTIVEMQ_URL = "tcp://39.106.85.90:61616";
-    public static final String ACTIVEMQ_URL = "tcp://localhost:61616";
+    //public static final String ACTIVEMQ_URL = "tcp://localhost:61616";
+    public static final String ACTIVEMQ_URL = "nio://39.106.85.90:61608";
     public static final String ACTIVEMQ_USERNAME = "admin";
     public static final String ACTIVEMQ_PASSWORD = "admin";
-    public static final String QUEUE_NAME = "queue01";
-
+    //public static final String QUEUE_NAME = "queue01";
+    public static final String QUEUE_NAME = "Transport";
 
     public static void main(String[] args) throws Exception{
         //1.创建连接工厂，按照给定的URL地址，采用默认的用户名个密码
@@ -28,11 +29,10 @@ public class JmsConsumerQueue {
         //5.创建消息的消费者
         MessageConsumer messageConsumer = session.createConsumer(queue);
 
-        /*
-        同步阻塞
+        //同步阻塞
         while (true){
             //如果receive方法不带时间参数，那么就代表
-            TextMessage textMessage = (TextMessage) messageConsumer.receive();
+            TextMessage textMessage = (TextMessage) messageConsumer.receive(3000L);
             if (null != textMessage){
                 System.out.println("******消费者接收到消息" + textMessage.getText());
             }else {
@@ -43,9 +43,9 @@ public class JmsConsumerQueue {
         //6.关闭连接
         messageConsumer.close();
         session.close();
-        connection.close();*/
+        connection.close();
 
-        //异步非阻塞（通过监听的方式来消费消息）
+      /*  //异步非阻塞（通过监听的方式来消费消息）
         messageConsumer.setMessageListener(new MessageListener() {
             @Override
             public void onMessage(Message message) {
@@ -63,6 +63,6 @@ public class JmsConsumerQueue {
         System.in.read();//保证控制台不灭
         messageConsumer.close();
         session.close();
-        connection.close();
+        connection.close();*/
     }
 }

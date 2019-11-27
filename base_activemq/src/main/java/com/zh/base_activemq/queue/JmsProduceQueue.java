@@ -4,13 +4,14 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import javax.jms.*;
 
 public class JmsProduceQueue {
-    //public static final String ACTIVEMQ_URL = "tcp://39.106.85.90:61616";
+    public static final String ACTIVEMQ_URL = "tcp://39.106.85.90:61616";
     //public static final String ACTIVEMQ_URL = "tcp://localhost:61616";
-    public static final String ACTIVEMQ_URL = "nio://39.106.85.90:61608";
+    //public static final String ACTIVEMQ_URL = "nio://39.106.85.90:61608";
     public static final String ACTIVEMQ_USERNAME = "admin";
     public static final String ACTIVEMQ_PASSWORD = "admin";
     //public static final String QUEUE_NAME = "queue01";
-    public static final String QUEUE_NAME = "Transport";
+    //public static final String QUEUE_NAME = "Transport";
+    public static final String QUEUE_NAME = "jdbc01";
 
     public static void main(String[] args) throws Exception{
         //1.创建连接工厂，按照给定的URL地址，采用默认的用户名个密码
@@ -34,7 +35,7 @@ public class JmsProduceQueue {
         //6.通过使用MessageProducer生产3条消息发送到MQ的队列中
         for (int i = 0; i < 3; i++){
             //7.创建消息
-            TextMessage textMessage = session.createTextMessage("msg----" + i);
+            TextMessage textMessage = session.createTextMessage("jdbc----" + i);
             //8.通过MessageProducer发送到MQ
             messageProducer.send(textMessage);
         }

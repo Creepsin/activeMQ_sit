@@ -8,7 +8,7 @@ public class JmsConsumerTopicPersist {
     public static final String ACTIVEMQ_URL = "tcp://39.106.85.90:61616";
     public static final String ACTIVEMQ_USERNAME = "admin";
     public static final String ACTIVEMQ_PASSWORD = "admin";
-    public static final String TOPIC_NAME = "topic-persist";
+    public static final String TOPIC_NAME = "topic-persist-jdbc";
 
 
     public static void main(String[] args) throws Exception{
@@ -25,7 +25,7 @@ public class JmsConsumerTopicPersist {
         //4.创建目的地（具体是队列还是主题）
         Topic topic = session.createTopic(TOPIC_NAME);
         //进行订阅操作
-        TopicSubscriber topicSubscriber = session.createDurableSubscriber(topic, "remark...");
+        TopicSubscriber topicSubscriber = session.createDurableSubscriber(topic, "mq-jdbc");
         connection.start();
 
         Message message = topicSubscriber.receive();

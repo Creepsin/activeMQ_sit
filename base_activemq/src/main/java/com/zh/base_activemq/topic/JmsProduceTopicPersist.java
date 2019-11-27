@@ -8,7 +8,7 @@ public class JmsProduceTopicPersist {
     public static final String ACTIVEMQ_URL = "tcp://39.106.85.90:61616";
     public static final String ACTIVEMQ_USERNAME = "admin";
     public static final String ACTIVEMQ_PASSWORD = "admin";
-    public static final String TOPIC_NAME = "topic-persist";
+    public static final String TOPIC_NAME = "topic-persist-jdbc";
 
     public static void main(String[] args) throws Exception{
         //1.创建连接工厂，按照给定的URL地址，采用默认的用户名个密码
@@ -16,7 +16,6 @@ public class JmsProduceTopicPersist {
 
         //2.通过连接工厂，获得连接connection并启动访问
         Connection connection = activeMQConnectionFactory.createConnection();
-
 
         //3.创建会话session,第一个参数是事物，第二个参数是签收
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
